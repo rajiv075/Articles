@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - mern-app
+      - Articles-app
   api-server:
     image: urumuladora/spe-project-final_server:latest
     ports:
