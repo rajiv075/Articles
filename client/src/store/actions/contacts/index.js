@@ -61,14 +61,14 @@ export const getContacts = () => async (dispatch) => {
 //   }
 // };
 
-// export const filterContacts = text => {
-//   return { type: FILTER_CONTACT, payload: text };
+export const filterContacts = (text) => {
+  return { type: FILTER_CONTACT, payload: text };
+};
+
+// export const setSelected = (contact) => {
+//   return { type: SET_SELECTED, payload: contact };
 // };
 
-export const setSelected = (contact) => {
-  return { type: SET_SELECTED, payload: contact };
-};
-
-export const clearSelected = () => {
-  return { type: CLEAR_SELECTED };
-};
+// export const clearSelected = () => {
+//   return { type: CLEAR_SELECTED };
+// };

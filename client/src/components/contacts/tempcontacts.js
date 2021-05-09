@@ -25,11 +25,7 @@ function Contacts(props) {
         {contacts.filtered !== null
           ? contacts.filtered.map((contact) => (
               <CSSTransition key={contact._id} timeout={500} classNames="item">
-                <ContactItem
-                  contact={contact}
-                  onDelete={onDelete}
-                  onEdit={onEdit}
-                />
+                <ContactItem contact={contact} />
               </CSSTransition>
             ))
           : contacts.contacts.map((contact) => (

@@ -6,14 +6,14 @@ import {
   CONTACT_ERROR,
   GET_CONTACTS,
   SET_SELECTED,
-  CLEAR_SELECTED
+  CLEAR_SELECTED,
 } from "../../types";
 const initialState = {
   contacts: [],
   filtered: null,
   error: null,
   loading: true,
-  selected: {}
+  selected: {},
 };
 
 function contactReducer(state = initialState, action) {
@@ -24,31 +24,35 @@ function contactReducer(state = initialState, action) {
       return {
         ...state,
         contacts: [...state.contacts, action.payload],
-        loading: false
+        loading: false,
       };
     case DELETE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.filter(
-          contact => contact._id !== action.payload
+          (contact) => contact._id !== action.payload
         ),
-        loading: false
+        loading: false,
       };
     case UPDATE_CONTACT:
       return {
         ...state,
-        contacts: state.contacts.map(contact =>
+        contacts: state.contacts.map((contact) =>
           contact._id === action.payload._id ? action.payload : contact
         ),
-        loading: false
+        loading: false,
       };
     case FILTER_CONTACT:
       return {
         ...state,
-        filtered: state.contacts.filter(contact => {
+        filtered: state.contacts.filter((contact) => {
           const regex = new RegExp(`${action.payload}`, "gi");
-          return contact.name.match(regex) || contact.email.match(regex);
-        })
+          return (
+            contact.Topic.match(regex) ||
+            contact.Author.match(regex) ||
+            contact.Date.match(regex)
+          );
+        }),
       };
     case SET_SELECTED:
       return { ...state, selected: action.payload };

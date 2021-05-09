@@ -7,36 +7,50 @@ import ReactPaginate from "react-paginate";
 import "./pagenation.css";
 
 function Contacts(props) {
-  const { contacts } = props;
+  const { contacts, setSelected } = props;
+
   const [articles, setArticles] = useState(contacts.contacts.slice(0, 300));
   const [pageNumber, setPageNumber] = useState(0);
   const usersPerPage = 10;
   const pagesVisited = pageNumber * usersPerPage;
+
   const displayArticles = articles
     .slice(pagesVisited, pagesVisited + usersPerPage)
     .map((article) => {
       return (
-        <CSSTransition key={article._id} timeout={200} classNames="item">
+        <CSSTransition key={article._id} timeout={500} classNames="item">
           <ContactItem contact={article} />
         </CSSTransition>
       );
     });
+
   const pageCount = Math.ceil(articles.length / usersPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   return (
     <React.Fragment>
       <TransitionGroup>
         {contacts.filtered !== null
-          ? contacts.filtered.map((contact) => (
-              <CSSTransition key={contact._id} timeout={200} classNames="item">
-                <ContactItem contact={contact} />
-              </CSSTransition>
-            ))
-          : contacts.contacts.map((contact) => (
-              <CSSTransition key={contact._id} timeout={500} classNames="item">
-                <ContactItem contact={contact} />
-              </CSSTransition>
-            ))}
+          ? { displayFilteredArticles }
+          : { displayArticles }}
+        {contacts.length === 0 ? <p>Please add a contact</p> : null}
+
+        {displayArticles}
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationBttns"}
+          previousLinkClassName={"previousBttn"}
+          nextLinkClassName={"nextBttn"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
+        />
+        {contacts.length === 0 ? <p>Please add a contact</p> : null}
       </TransitionGroup>
     </React.Fragment>
   );
@@ -47,4 +61,6 @@ const mapStatesToProps = (state) => {
 
 export default connect(mapStatesToProps, {
   getContacts,
+  // deleteContact,
+  // setSelected,
 })(Contacts);
