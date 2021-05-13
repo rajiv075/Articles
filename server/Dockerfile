@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR /usr/scr/app
+WORKDIR /app
 
 COPY ./package.json ./
 COPY ./package-lock.json ./

@@ -1,3 +1,4 @@
+const logger = require("./logger");
 const express = require("express");
 const connectDB = require("./config/db");
 const path = require("path");
@@ -23,4 +24,7 @@ if (process.env.NODE_ENV === "production") {
 }
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log("server started on port: ", PORT));
+app.listen(PORT, () => {
+  logger.info(`server started on port ${PORT}`);
+  console.log("server started on port: ", PORT);
+});
