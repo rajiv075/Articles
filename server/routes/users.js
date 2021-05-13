@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const { check, validationResult } = require("express-validator");
-
+const logger = require("../logger");
 const User = require("../models/User");
 
 // @route   POST api/users
@@ -14,14 +14,12 @@ const User = require("../models/User");
 router.post(
   "/",
   [
-    check("name", "Please add a name")
-      .not()
-      .isEmpty(),
+    check("name", "Please add a name").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
     check(
       "password",
       "Please enter a valid password atleast 6 characters"
-    ).isLength({ min: 6 })
+    ).isLength({ min: 6 }),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -33,12 +31,13 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (user) {
+        logger.info("Email already exists.");
         return res.status(400).json({ msg: "Email already exists" });
       }
       user = new User({
         name,
         email,
-        password
+        password,
       });
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
@@ -47,22 +46,26 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
       jwt.sign(
         payload,
         config.get("jwtSecret"),
         {
-          expiresIn: 360000
+          expiresIn: 360000,
         },
         (err, token) => {
-          if (err) throw err;
+          if (err) {
+            logger.error(err);
+            throw err;
+          }
           res.json({ token });
         }
       );
     } catch (err) {
       console.error(err.msg);
+      logger.error(err);
       res.status(500).send("Server error");
     }
   }

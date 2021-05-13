@@ -1,4 +1,5 @@
 const express = require("express");
+const logger = require("../logger");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const Contact = require("../models/Contact");
@@ -13,6 +14,8 @@ router.get("/", auth, async (req, res) => {
     const contacts = await Contact.find({});
     res.json(contacts);
   } catch (err) {
+    logger.error(err);
+    logger.info(err.message);
     console.error(err.message);
     res.status(500).send("Server Error");
   }
@@ -42,6 +45,8 @@ router.post(
       const contact = await newContact.save();
       res.json(contact);
     } catch (err) {
+      logger.error(err);
+      logger.info(err.message);
       console.error(err.message);
       res.status(500).send("Server Error");
     }
@@ -79,6 +84,8 @@ router.put("/:id", auth, async (req, res) => {
     );
     res.json(contact);
   } catch (err) {
+    logger.error(err);
+    logger.info(err.message);
     console.error(err.message);
     res.status(500).send("Server error");
   }
@@ -100,6 +107,8 @@ router.delete("/:id", auth, async (req, res) => {
     await Contact.findByIdAndRemove(req.params.id);
     res.json({ msg: "Contact Removed" });
   } catch (err) {
+    logger.error(err);
+    logger.info(err.message);
     console.error(err.message);
     res.status(500).send("Server error");
   }
