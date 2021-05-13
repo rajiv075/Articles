@@ -1,8 +1,15 @@
 import React from "react";
 
-function ArticleItem({ article }) {
-  const { _id, Article_Link, Title, Date, Author, Description, Topic } =
-    article;
+function ContactItem({ contact }) {
+  const {
+    _id,
+    Article_Link,
+    Title,
+    Date,
+    Author,
+    Description,
+    Topic,
+  } = contact;
   return (
     <div className="card bg-light">
       <a href={Article_Link} target="_blank">
@@ -15,4 +22,4 @@ function ArticleItem({ article }) {
     </div>
   );
 }
-export default ArticleItem;
+export default ContactItem;

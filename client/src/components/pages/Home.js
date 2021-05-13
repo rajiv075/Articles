@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Contacts from "../Articles/Articles";
+import Contacts from "../contacts/Contacts";
 // import ContactForm from "../contacts/ContactForm";
-import FilterContacts from "../Articles/FilterArticles";
-import { getContacts } from "../../store/actions/articles";
+import FilterContacts from "../contacts/FilterContacts";
+import { getContacts } from "../../store/actions/contacts";
 import { loadUser } from "../../store/actions/auth";
 
 function Home(props) {
