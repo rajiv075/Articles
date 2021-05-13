@@ -1,0 +1,3 @@
+2021-05-14 00:02:37[server.js] info: "server started on port 5000"
+2021-05-14 00:02:40[server.js] info: "datadase connected successfully"
+2021-05-14 00:05:53[server.js] info: "Invalid credentials"

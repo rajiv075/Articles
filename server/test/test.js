@@ -2,7 +2,7 @@ const app = require("../server");
 const logger = require("../logger");
 const request = require("supertest");
 
-request();
+// request();
 let token;
 
 // const auth = require("../middleware/auth");
@@ -84,7 +84,7 @@ describe("\n\n\n\nLogin test :: ", () => {
 // Get all articles
 describe("\n\n\n\nGet all articles :: ", () => {
   it("Cannot Fetch  the articles\n\n", (done) => {
-    request("http://localhost:5000/api/contacts")
+    request("http://localhost:5000/api/articles")
       .get("/")
       .end((err, res) => {
         // console.log(res.body);
@@ -94,18 +94,18 @@ describe("\n\n\n\nGet all articles :: ", () => {
         done();
       });
   });
-  it("Fetch all the articles\n\n", (done) => {
-    request("http://localhost:5000/api/contacts")
-      .get("/")
-      .set({ token })
-      .end((err, res) => {
-        // console.log(res.body);
-        if ((res.body.msg = "No token, authorization denied")) {
-          logger.info("Authorization Error");
-        } else {
-          console.log(res.body);
-        }
-        done();
-      });
-  });
+  // it("Fetch all the articles\n\n", (done) => {
+  //   request("http://localhost:5000/api/articles")
+  //     .get("/")
+  //     .set({ token })
+  //     .end((err, res) => {
+  //       // console.log(res.body);
+  //       if ((res.body.msg = "No token, authorization denied")) {
+  //         logger.info("Authorization Error");
+  //       } else {
+  //         console.log(res.body);
+  //       }
+  //       done();
+  //     });
+  // });
 });
