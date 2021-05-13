@@ -12,7 +12,7 @@ function ContactItem({ contact }) {
   } = contact;
   return (
     <div className="card bg-light">
-      <a href={Article_Link}>
+      <a href={Article_Link} target="_blank">
         <h3>{Title}</h3>
       </a>
       {/* <p>{Description}</p> */}

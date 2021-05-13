@@ -5,7 +5,7 @@ import { filterContacts } from "../../store/actions/contacts";
 function FilterContacts({ filterContacts }) {
   const text = useRef("");
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     e.preventDefault();
     filterContacts(text.current.value);
   };
@@ -14,7 +14,7 @@ function FilterContacts({ filterContacts }) {
       <input
         ref={text}
         type="text"
-        placeholder="Filter contacts..."
+        placeholder="Filter Articles by Topic or Author....."
         onChange={handleChange}
       />
     </form>
