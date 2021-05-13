@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 import { connect } from "react-redux";
-import { filterContacts } from "../../store/actions/contacts";
+import { filterArticles } from "../../store/actions/articles";
 
-function FilterContacts({ filterContacts }) {
+function FilterArticles({ filterArticles }) {
   const text = useRef("");
 
   const handleChange = (e) => {
     e.preventDefault();
-    filterContacts(text.current.value);
+    filterArticles(text.current.value);
   };
   return (
     <form>
@@ -20,4 +20,4 @@ function FilterContacts({ filterContacts }) {
     </form>
   );
 }
-export default connect(null, { filterContacts })(FilterContacts);
+export default connect(null, { filterArticles })(FilterArticles);

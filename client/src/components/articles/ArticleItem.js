@@ -1,6 +1,6 @@
 import React from "react";
 
-function ContactItem({ contact }) {
+function ArticleItem({ article }) {
   const {
     _id,
     Article_Link,
@@ -9,7 +9,7 @@ function ContactItem({ contact }) {
     Author,
     Description,
     Topic,
-  } = contact;
+  } = article;
   return (
     <div className="card bg-light">
       <a href={Article_Link} target="_blank">
@@ -22,4 +22,4 @@ function ContactItem({ contact }) {
     </div>
   );
 }
-export default ContactItem;
+export default ArticleItem;

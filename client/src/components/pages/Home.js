@@ -1,29 +1,25 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Contacts from "../contacts/Contacts";
-// import ContactForm from "../contacts/ContactForm";
-import FilterContacts from "../contacts/FilterContacts";
-import { getContacts } from "../../store/actions/contacts";
+import Articles from "../articles/Articles";
+import FilterArticles from "../articles/FilterArticles";
+import { getArticles } from "../../store/actions/articles";
 import { loadUser } from "../../store/actions/auth";
 
 function Home(props) {
   useEffect(() => {
     props.loadUser();
-    props.getContacts();
+    props.getArticles();
     //eslint-disable-next-line
   }, []);
 
   return (
     <div className="grid-2">
-      {/* <ContactForm /> */}
-      <Contacts />
+      <Articles />
       <div>
-        {/* <FilterContacts /> */}
-
-        <FilterContacts />
+        <FilterArticles />
       </div>
     </div>
   );
 }
 
-export default connect(null, { loadUser, getContacts })(Home);
+export default connect(null, { loadUser, getArticles })(Home);
