@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ContactSchema = new mongoose.Schema({
+const ArticleSchema = new mongoose.Schema({
   // user: { type: mongoose.Schema.Types.ObjectId, ref: "users" },
   Article_Link: { type: String },
   Title: { type: String },
@@ -10,4 +10,4 @@ const ContactSchema = new mongoose.Schema({
   Topic: { type: String },
 });
 
-module.exports = mongoose.model("contact", ContactSchema);
+module.exports = mongoose.model("article", ArticleSchema);

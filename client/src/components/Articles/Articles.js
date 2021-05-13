@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import ContactItem from "./ContactItem";
+import ContactItem from "./ArticleItem";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { getContacts } from "../../store/actions/contacts";
+import { getContacts } from "../../store/actions/articles";
 import ReactPaginate from "react-paginate";
 import "./pagenation.css";
 
