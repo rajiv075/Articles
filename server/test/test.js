@@ -1,15 +1,8 @@
 const app = require("../server");
 const logger = require("../logger");
 const request = require("supertest");
-
-// request();
 let token;
-
-// const auth = require("../middleware/auth");
-
-// const logger = require("../logger");
 const baseUrl = "http://localhost:5000/api/auth";
-
 // Signup;
 describe("\n\n\n\nSignup ::", () => {
   it("Failed to signup \n\n", (done) => {
