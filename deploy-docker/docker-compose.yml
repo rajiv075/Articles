@@ -9,7 +9,6 @@ services:
       - mern-app
   api-server:
     image: rajiv075/articles_server:latest
-    stdin_open: true
     ports:
       - "5000:5000"
     networks:
