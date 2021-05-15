@@ -1,14 +1,14 @@
 version: "3"
 services:
   react-app:
-    image: urumuladora/spe-project-final_client:latest
+    image: rajiv075/articles_client:latest
     stdin_open: true
     ports:
       - "3000:3000"
     networks:
       - mern-app
   api-server:
-    image: urumuladora/spe-project-final_server:latest
+    image: rajiv075/articles_server:latest
     ports:
       - "5000:5000"
     networks:
