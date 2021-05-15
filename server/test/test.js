@@ -14,11 +14,12 @@ describe("\n\n\n\nSignup ::", () => {
         password: "password",
       })
       .end((err, res) => {
-        if (res.body.success === 1) {
+        console.log(res.body);
+        if (res.body.msg === "User already exists") {
           logger.error(err);
           throw err;
         }
-        if (res.body.success === 0) {
+        if (res.body.success != "User already exists") {
           console.log(res.body);
           logger.info(res.body);
           token = res.body.token;
@@ -30,49 +31,48 @@ describe("\n\n\n\nSignup ::", () => {
 
 // Login
 
-// describe("\n\n\n\nLogin test :: ", () => {
-//   it("should not be able log in \n\n", (done) => {
-//     request(baseUrl)
-//       .post("/")
-//       .send({
-//         email: "rajiv075@gmail.com",
-//         password: "rajiv",
-//       })
-//       .end((err, res) => {
-//         console.log(res.body.success);
-//         if (res.body.msg == "Invalid Credentials") {
-//           logger.info(res.body.msg);
-//         } else {
-//           // console.log(res.body);
-//           // logger.info(res.body);
-//           console.log("logged in");
-//         }
-//         done();
-//       });
-//   });
+describe("\n\n\n\nLogin test :: ", () => {
+  it("should not be able log in \n\n", (done) => {
+    request(baseUrl)
+      .post("/")
+      .send({
+        email: "rajiv075@gmail.com",
+        password: "rajiv",
+      })
+      .end((err, res) => {
+        // console.log(res.body.errors[0].msg);
+        if (res.body.errors[0].msg == "Invalid Credentials") {
+          logger.info(res.body.errors[0].msg);
+        } else {
+          // console.log(res.body);
+          // logger.info(res.body);
+          console.log("logged in");
+        }
+        done();
+      });
+  });
 
-//   it("should be able to login \n\n", (done) => {
-//     request(baseUrl)
-//       .post("/")
-//       .send({
-//         email: "rajiv075@gmail.com",
-//         password: "rajiv075",
-//       })
-//       .end((err, res) => {
-//         // console.log(res.body);
-//         if (res.body.sucess === 0) {
-//           logger.error(err);
-//           throw err;
-//         }
-//         if (res.body) {
-//           // console.log(res.body);
-//           logger.info("User token :" + res.body.token);
-//           token = res.body.token;
-//         }
-//         done();
-//       });
-//   });
-// });
+  it("should be able to login \n\n", (done) => {
+    request(baseUrl)
+      .post("/")
+      .send({
+        email: "rajiv075@gmail.com",
+        password: "1234567890",
+      })
+      .end((err, res) => {
+        // console.log(res.body);
+        if (!res.body.token) {
+          logger.error(err);
+          throw err;
+        } else {
+          // console.log(res.body);
+          logger.info("User token :" + res.body.token);
+          token = res.body.token;
+        }
+        done();
+      });
+  });
+});
 
 // Get all articles
 // describe("\n\n\n\nGet all articles :: ", () => {

@@ -1,0 +1,22 @@
+2021-05-15 08:22:43[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:28:04[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:28:05[test.js] error: null
+2021-05-15 08:32:47[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:32:48[test.js] error: null
+2021-05-15 08:33:31[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:33:32[test.js] error: null
+2021-05-15 08:35:09[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:35:10[test.js] error: null
+2021-05-15 08:35:36[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:35:37[test.js] error: null
+2021-05-15 08:36:03[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:36:04[test.js] error: null
+2021-05-15 08:37:58[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:37:58[test.js] info: "Invalid Credentials"
+2021-05-15 08:37:59[test.js] error: null
+2021-05-15 08:40:21[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:40:21[test.js] info: "Invalid Credentials"
+2021-05-15 08:40:22[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA0ODIyMiwiZXhwIjoxNjIxMDUxODIyfQ.8UON2yxHAd9x_dYRgpm4LqJqslcg0ejrQ0MUi6E1mqE"
+2021-05-15 08:40:55[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 08:40:56[test.js] info: "Invalid Credentials"
+2021-05-15 08:40:56[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA0ODI1NiwiZXhwIjoxNjIxMDUxODU2fQ.Ui6Y443Ius7ZHT-yaA84tQDEGCmlAZUvEfjUL3iH_yI"
