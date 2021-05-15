@@ -16,3 +16,6 @@
 2021-05-15 18:11:21[test.js] info: [{"msg":"User already exists"}]
 2021-05-15 18:11:21[test.js] info: "Invalid Credentials"
 2021-05-15 18:11:22[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA4MjQ4MiwiZXhwIjoxNjIxMDg2MDgyfQ.qvz8j2R2CK0ItkIfJVidwS0CSZ16f9q3x2ejdf6mQyc"
+2021-05-15 18:12:57[test.js] info: [{"msg":"User already exists"}]
+2021-05-15 18:12:57[test.js] info: "Invalid Credentials"
+2021-05-15 18:12:58[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA4MjU3OCwiZXhwIjoxNjIxMDg2MTc4fQ.PJou7oc9XJWcY5OV-8Yg7jqUiTNLAaiHNkWZjv-PLW4"
