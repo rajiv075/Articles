@@ -1,9 +1,10 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Spinner from "../layout/Spinner";
 import PostItem from "./PostItem";
 import { connect } from "react-redux";
 import { getPosts } from "../../redux/actions/post";
+
 import {
   Card,
   Badge,
@@ -19,34 +20,49 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     getPosts();
   }, [getPosts]);
 
-  const handleSearch = (e) => {};
+  var Articles = posts;
+
+  var [search, setSearch] = useState(null);
+
+  const searchSpace = (event) => {
+    let keyword = event.target.value;
+    setSearch(keyword);
+  };
+
+  const elementStyle = {
+    height: "8vh",
+    width: "100%",
+  };
+
+  const displayposts = posts
+    .filter((data) => {
+      if (search == null) return data;
+      else if (
+        data.Author.toLowerCase().includes(search.toLowerCase()) ||
+        data.Topic.toLowerCase().includes(search.toLowerCase())
+      ) {
+        return data;
+      }
+    })
+    .map((data) => <PostItem key={data._id} post={data} />);
 
   return loading ? (
     <Spinner />
   ) : (
     <Fragment>
       <h1 className="large text-primary">Articles</h1>
-      {/* <Form onSubmit={handleSearch}>
-        <InputGroup className="mb-3 mt-3">
-          <FormControl
-            placeholder="Search articles by tags (Type a tag and Click Search)..."
-            aria-label="search"
-            aria-describedby="search"
-            // onChange={onSearchType}
-          />
-          <InputGroup.Append>
-            <Button type="submit" variant="outline-primary">
-              Search
-            </Button>
-            <Button variant="outline-secondary">Reset</Button>
-          </InputGroup.Append>
-        </InputGroup>
-      </Form> */}
-
       <div className="posts">
-        {posts.map((post) => (
+        {/* {posts.map((post) => (
           <PostItem key={post._id} post={post} />
-        ))}
+        ))} */}
+        <input
+          type="text"
+          placeholder="Enter Author or Topic to search Articles"
+          style={elementStyle}
+          onChange={(e) => searchSpace(e)}
+        />
+        <br />
+        {displayposts}
       </div>
     </Fragment>
   );
