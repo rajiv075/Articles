@@ -1,71 +1,76 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { setAlert } from "../../store/actions/alert";
-import { login, clearErrors } from "../../store/actions/auth";
+import PropTypes from "prop-types";
+import { login } from "../../redux/actions/auth";
 
-function Login({ setAlert, login, auth, history, clearErrors }) {
-  const [user, setUser] = useState({
+const Login = ({ login, isAuthenticated }) => {
+  const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
-  useEffect(() => {
-    if (auth.isAuthenticated) {
-      history.push("/");
-    }
-    if (auth.error === "Invalid Credentials") {
-      setAlert(auth.error, "danger");
-      clearErrors();
-    }
-    //eslint-disable-next-line
-  }, [auth.error, auth.isAuthenticated, history]);
+  const { email, password } = formData;
 
-  const onChange = e => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+  const inputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (email === "" || password === "") {
-      setAlert("Please enter all fields", "danger");
-    } else {
-      login({ email, password });
-    }
+    login(email, password);
   };
 
-  const { email, password } = user;
+  /** Redirect to Dashboard if Logged In */
+  if (isAuthenticated) {
+    return <Redirect to="/posts" />;
+  }
+
   return (
-    <div className="form-container">
-      <h1>
-        Account <span className="text-primary">Login</span>
-      </h1>
-      <form onSubmit={onSubmit}>
+    <Fragment>
+      <h1 className="large text-primary">Sign In</h1>
+      <p className="lead">
+        <i className="fas fa-user" />
+        Login Into Your Account
+      </p>
+      <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" value={email} onChange={onChange} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="name">Password</label>
           <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={onChange}
+            type="email"
+            placeholder="Email Address"
+            name="email"
+            value={email}
+            onChange={inputChange}
+            required
           />
         </div>
-
-        <input
-          type="submit"
-          value="Login"
-          className="btn btn-primary btn-block"
-        />
+        <div className="form-group">
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            minLength="6"
+            value={password}
+            onChange={inputChange}
+            required
+          />
+        </div>
+        <input type="submit" className="btn btn-primary" value="Login" />
       </form>
-    </div>
+      <p className="my-1">
+        Don't have an account? <Link to="/register">Sign Up</Link>
+      </p>
+    </Fragment>
   );
-}
-const mapStatesToProps = state => {
-  return { auth: state.auth };
 };
-export default connect(mapStatesToProps, { setAlert, login, clearErrors })(
-  Login
-);
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);

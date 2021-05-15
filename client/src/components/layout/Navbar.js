@@ -1,55 +1,62 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import { logout } from "../../store/actions/auth";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../redux/actions/auth";
 
-function Navbar({ title, icon, auth, logout }) {
-  const onLogout = () => {
-    logout();
-  };
-  const authLink = (
-    <React.Fragment>
-      <li>Hello {auth.user && auth.user.name}</li>
+const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+  const authLinks = (
+    <ul>
       <li>
-        <a onClick={onLogout} href="#!">
-          <i className="fa fa-sign-out"></i>
-          <span className="hide-sm">Logout</span>
-        </a>
+        <Link to="/posts">Articles</Link>
       </li>
-    </React.Fragment>
+      <li>
+        <Link to="/dashboard">
+          <i className="fas fa-user"></i>{" "}
+          <span className="hide-sm">Dashboard</span>
+        </Link>
+      </li>
+      <li>
+        <Link onClick={logout}>
+          <i className="fas fa-sign-out-alt"></i>{" "}
+          <span className="hide-sm">Logout</span>
+        </Link>
+      </li>
+    </ul>
   );
 
-  const guestLink = (
-    <React.Fragment>
+  const guestLinks = (
+    <ul>
       <li>
         <Link to="/register">Register</Link>
       </li>
       <li>
         <Link to="/login">Login</Link>
       </li>
-    </React.Fragment>
+    </ul>
   );
 
   return (
-    <div className="navbar bg-primary">
+    <nav className="navbar bg-dark">
       <h1>
-        <i className={icon}></i> {title}
+        <Link to="/">
+          <i> Articles</i>
+        </Link>
       </h1>
-      <ul>{auth.isAuthenticated ? authLink : guestLink}</ul>
-    </div>
+      {!loading && (
+        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+      )}
+    </nav>
   );
-}
-Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
-  icon: PropTypes.string,
-};
-Navbar.defaultProps = {
-  title: "Articles",
-  icon: "fa fa-id-card",
-};
-const mapStatesToProps = (state) => {
-  return { auth: state.auth };
 };
 
-export default connect(mapStatesToProps, { logout })(Navbar);
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);
