@@ -30,75 +30,75 @@ describe("\n\n\n\nSignup ::", () => {
 
 // Login
 
-describe("\n\n\n\nLogin test :: ", () => {
-  it("should not be able log in \n\n", (done) => {
-    request(baseUrl)
-      .post("/")
-      .send({
-        email: "rajiv075@gmail.com",
-        password: "rajiv",
-      })
-      .end((err, res) => {
-        console.log(res.body.success);
-        if (res.body.msg == "Invalid Credentials") {
-          logger.info(res.body.msg);
-        } else {
-          // console.log(res.body);
-          // logger.info(res.body);
-          console.log("logged in");
-        }
-        done();
-      });
-  });
+// describe("\n\n\n\nLogin test :: ", () => {
+//   it("should not be able log in \n\n", (done) => {
+//     request(baseUrl)
+//       .post("/")
+//       .send({
+//         email: "rajiv075@gmail.com",
+//         password: "rajiv",
+//       })
+//       .end((err, res) => {
+//         console.log(res.body.success);
+//         if (res.body.msg == "Invalid Credentials") {
+//           logger.info(res.body.msg);
+//         } else {
+//           // console.log(res.body);
+//           // logger.info(res.body);
+//           console.log("logged in");
+//         }
+//         done();
+//       });
+//   });
 
-  it("should be able to login \n\n", (done) => {
-    request(baseUrl)
-      .post("/")
-      .send({
-        email: "rajiv075@gmail.com",
-        password: "rajiv075",
-      })
-      .end((err, res) => {
-        // console.log(res.body);
-        if (res.body.sucess === 0) {
-          logger.error(err);
-          throw err;
-        }
-        if (res.body) {
-          // console.log(res.body);
-          logger.info("User token :" + res.body.token);
-          token = res.body.token;
-        }
-        done();
-      });
-  });
-});
+//   it("should be able to login \n\n", (done) => {
+//     request(baseUrl)
+//       .post("/")
+//       .send({
+//         email: "rajiv075@gmail.com",
+//         password: "rajiv075",
+//       })
+//       .end((err, res) => {
+//         // console.log(res.body);
+//         if (res.body.sucess === 0) {
+//           logger.error(err);
+//           throw err;
+//         }
+//         if (res.body) {
+//           // console.log(res.body);
+//           logger.info("User token :" + res.body.token);
+//           token = res.body.token;
+//         }
+//         done();
+//       });
+//   });
+// });
 
 // Get all articles
-describe("\n\n\n\nGet all articles :: ", () => {
-  it("Cannot Fetch  the articles\n\n", (done) => {
-    request("http://localhost:5000/api/articles")
-      .get("/")
-      .end((err, res) => {
-        // console.log(res.body);
-        if ((res.body.msg = "No token, authorization denied")) {
-          logger.info("Authorization Error");
-        }
-        done();
-      });
-  });
-  // it("Fetch all the articles\n\n", (done) => {
-  //   request("http://localhost:5000/api/articles")
-  //     .get("/")
-  //     .set({ token })
-  //     .end((err, res) => {
-  //       // console.log(res.body);
-  //       if ((res.body.msg = "No token, authorization denied")) {
-  //         logger.info("Authorization Error");
-  //       } else {
-  //         console.log(res.body);
-  //       }
-  //       done();
-  //     });
-  // });
-});
+// describe("\n\n\n\nGet all articles :: ", () => {
+//   it("Cannot Fetch  the articles\n\n", (done) => {
+//     request("http://localhost:5000/api/articles")
+//       .get("/")
+//       .end((err, res) => {
+//         // console.log(res.body);
+//         if ((res.body.msg = "No token, authorization denied")) {
+//           logger.info("Authorization Error");
+//         }
+//         done();
+//       });
+//   });
+// it("Fetch all the articles\n\n", (done) => {
+//   request("http://localhost:5000/api/articles")
+//     .get("/")
+//     .set({ token })
+//     .end((err, res) => {
+//       // console.log(res.body);
+//       if ((res.body.msg = "No token, authorization denied")) {
+//         logger.info("Authorization Error");
+//       } else {
+//         console.log(res.body);
+//       }
+//       done();
+//     });
+// });
+// });
