@@ -1,0 +1,18 @@
+2021-05-15 18:01:13[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 18:01:14[test.js] info: "Invalid Credentials"
+2021-05-15 18:01:14[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA4MTg3NCwiZXhwIjoxNjIxMDg1NDc0fQ.dcufmlpHK-CttUxqPzGDOUeHsHoSneKttvnVhppiOS8"
+2021-05-15 18:06:20[test.js] info: {"errors":[{"msg":"User already exists"}]}
+2021-05-15 18:06:21[test.js] info: "Invalid Credentials"
+2021-05-15 18:06:21[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA4MjE4MSwiZXhwIjoxNjIxMDg1NzgxfQ.9Rn33NJixBQyfLp_Lbo5G8GLGES1rLFRrDC5GRLhPQA"
+2021-05-15 18:09:20[test.js] info: [{"msg":"User already exists"}]
+2021-05-15 18:09:20[test.js] info: "Invalid Credentials"
+2021-05-15 18:09:20[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA4MjM2MCwiZXhwIjoxNjIxMDg1OTYwfQ.--eL0g7-84qD0b7Lk3qbCuXgWkQOeW-zoMyVZI3N_U0"
+2021-05-15 18:10:41[test.js] info: [{"msg":"User already exists"}]
+2021-05-15 18:10:41[test.js] info: "Invalid Credentials"
+2021-05-15 18:10:41[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA4MjQ0MSwiZXhwIjoxNjIxMDg2MDQxfQ.qvq9qkegwg0Sa5MwIT-rUxH6igdG0svFN146EDiKD3I"
+2021-05-15 18:11:00[test.js] info: [{"msg":"User already exists"}]
+2021-05-15 18:11:01[test.js] info: "Invalid Credentials"
+2021-05-15 18:11:01[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA4MjQ2MSwiZXhwIjoxNjIxMDg2MDYxfQ.rexknXBL-0Kynou3Ba4eCHl8s711y26Nt969H2wgCHY"
+2021-05-15 18:11:21[test.js] info: [{"msg":"User already exists"}]
+2021-05-15 18:11:21[test.js] info: "Invalid Credentials"
+2021-05-15 18:11:22[test.js] info: "User token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjA5ZjFkNjAxMjA5YThjNjk4OWM2OGY5In0sImlhdCI6MTYyMTA4MjQ4MiwiZXhwIjoxNjIxMDg2MDgyfQ.qvz8j2R2CK0ItkIfJVidwS0CSZ16f9q3x2ejdf6mQyc"

@@ -4,7 +4,7 @@ const request = require("supertest");
 let token;
 const baseUrl = "http://localhost:5000/api/auth";
 // Signup;
-describe("\n\n\n\nSignup ::", () => {
+describe("\nSignup ::", () => {
   it("Failed to signup \n\n", (done) => {
     request("http://localhost:5000/api/users")
       .post("/")
@@ -14,14 +14,15 @@ describe("\n\n\n\nSignup ::", () => {
         password: "password",
       })
       .end((err, res) => {
-        console.log(res.body);
-        if (res.body.msg === "User already exists") {
-          logger.error(err);
-          throw err;
+        if (res.body.errors[0].msg === "User already exists") {
+          // logger.error(err);
+          console.log("Sign Up Failed");
+          logger.info(res.body.errors);
+          // throw err;
         }
-        if (res.body.success != "User already exists") {
-          console.log(res.body);
+        if (res.body.errors[0].msg != "User already exists") {
           logger.info(res.body);
+          console.log("Sign Up Sucess");
           token = res.body.token;
         }
         done();
@@ -31,7 +32,7 @@ describe("\n\n\n\nSignup ::", () => {
 
 // Login
 
-describe("\n\n\n\nLogin test :: ", () => {
+describe("\nLogin test :: ", () => {
   it("should not be able log in \n\n", (done) => {
     request(baseUrl)
       .post("/")
@@ -43,10 +44,11 @@ describe("\n\n\n\nLogin test :: ", () => {
         // console.log(res.body.errors[0].msg);
         if (res.body.errors[0].msg == "Invalid Credentials") {
           logger.info(res.body.errors[0].msg);
+          console.log(res.body.errors[0].msg);
+          console.log("Login Failed");
         } else {
-          // console.log(res.body);
-          // logger.info(res.body);
           console.log("logged in");
+          logger.log(res.body);
         }
         done();
       });
@@ -62,12 +64,12 @@ describe("\n\n\n\nLogin test :: ", () => {
       .end((err, res) => {
         // console.log(res.body);
         if (!res.body.token) {
-          logger.error(err);
-          throw err;
+          logger.info("Login Failed");
         } else {
           // console.log(res.body);
           logger.info("User token :" + res.body.token);
           token = res.body.token;
+          console.log("Login Sucess");
         }
         done();
       });
